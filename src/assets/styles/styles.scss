@@ -1,0 +1,11 @@
+@import 'variables';
+@import 'mixins';
+
+@import 'theme';
+
+html,
+body {
+    height: 100%;
+    color: #fff;
+    background-color: $bg-color;
+}

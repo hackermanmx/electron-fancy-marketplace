@@ -1,0 +1,10 @@
+# Ignore artifacts:
+.github
+.vscode
+coverage
+dist
+e2e
+node_modules
+*.min.js
+*.min.css
+src/app/dashboard/actinsight
