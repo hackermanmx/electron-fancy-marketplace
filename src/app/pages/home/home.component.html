@@ -1,0 +1,10 @@
+<ng-container *ngIf="(loading$ | async) === false; else loadingMessage">
+    <div class="row">
+        <div *ngFor="let item of products$ | async" class="col-12 col-sm-6 col-lg-4 col-xl-3">
+            <efm-product [product]="item"></efm-product>
+        </div>
+    </div>
+</ng-container>
+<ng-template #loadingMessage>
+    <div class="d-flex flex-column align-items-center justify-content-center loading-msg">Loading products...</div>
+</ng-template>

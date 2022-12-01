@@ -1,0 +1,13 @@
+<div class="item-wrapper d-grid mb-3">
+    <div class="d-flex item-container">
+        <img width="75" height="75" [src]="product.img" [alt]="product.productName" />
+        <div class="d-flex flex-column justify-content-center description-wrapper">
+            <h5>{{ product.productName }}</h5>
+            <label>{{ product.price | currency }}</label>
+        </div>
+    </div>
+
+    <button class="text-white" (click)="removeItem(product)">
+        <i class="bi bi-trash3"></i>
+    </button>
+</div>

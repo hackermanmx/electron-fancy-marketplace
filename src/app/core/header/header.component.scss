@@ -1,0 +1,30 @@
+@import 'variables';
+
+header {
+    padding: 0.5rem 1.5rem;
+    background: #0c0c0c;
+    box-shadow: 0 4px 24px rgba(0, 0, 0, 0.08);
+    display: block;
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    width: auto;
+    height: 70px;
+    border-bottom: 1px solid #222227;
+    z-index: 999;
+
+    h1 {
+        cursor: pointer;
+    }
+
+    > div {
+        max-width: $max-width;
+        margin: 0 auto;
+
+        .d-grid {
+            grid-template-columns: 1fr 1fr;
+            column-gap: 30px;
+        }
+    }
+}

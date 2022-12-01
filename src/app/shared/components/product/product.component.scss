@@ -1,0 +1,153 @@
+@import 'variables';
+
+.card {
+    margin-top: 20px;
+    border-radius: 16px;
+    width: 100%;
+    position: relative;
+    overflow: hidden;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    align-items: flex-start;
+    padding: 20px;
+    border: 1px solid #222227;
+    background-color: $bg-card;
+
+    &:hover {
+        .card-cover img {
+            transform: scale(1.25);
+        }
+
+        .card-info button {
+            background-color: #2081e2ff;
+        }
+    }
+
+    .card-cover {
+        width: 100%;
+        border-radius: 16px;
+        overflow: hidden;
+        position: relative;
+        display: flex;
+        flex-direction: row;
+        justify-content: center;
+        align-items: center;
+        margin-bottom: 12px;
+
+        img {
+            transition: all 0.5s ease;
+            transform: unset;
+            width: 100%;
+        }
+    }
+
+    .card-title {
+        display: block;
+        width: 100%;
+        color: #fff;
+        overflow: hidden;
+        white-space: nowrap;
+        text-overflow: ellipsis;
+        word-wrap: break-word;
+        font-family: 'Inter', sans-serif;
+        font-weight: 500;
+        font-size: 18px;
+        margin-bottom: 15px;
+        transition: color 0.5s ease;
+    }
+
+    .card-author {
+        display: flex;
+        flex-direction: row;
+        justify-content: flex-start;
+        align-items: center;
+        width: 100%;
+        position: relative;
+
+        i {
+            font-size: 36px;
+            margin-right: 10px;
+        }
+
+        a {
+            font-family: sans-serif;
+            font-weight: 500;
+            color: #bdbdbd;
+            font-size: 16px;
+        }
+    }
+
+    .card-info {
+        display: flex;
+        flex-direction: row;
+        justify-content: space-between;
+        align-items: flex-end;
+        width: 100%;
+        border-top: 1px solid #222227;
+        padding-top: 15px;
+        margin-top: 15px;
+
+        .card-price {
+            display: inline-flex;
+            flex-direction: column;
+            justify-content: flex-start;
+            align-items: flex-start;
+            position: relative;
+
+            p {
+                font-size: 14px;
+                line-height: 100%;
+                color: #bdbdbd;
+                margin-bottom: 0;
+            }
+
+            span {
+                font-size: 18px;
+                line-height: 20px;
+                color: #fff;
+                margin-top: 15px;
+            }
+        }
+
+        button {
+            border-radius: 12px;
+            color: white;
+            transition: all 0.5s ease;
+            padding: 5px 10px;
+
+            &:hover {
+                background-color: #2081e2ff;
+            }
+        }
+    }
+
+    .card-likes {
+        position: absolute;
+        top: 35px;
+        right: 35px;
+        display: inline-flex;
+        flex-direction: row;
+        justify-content: flex-start;
+        align-items: center;
+
+        &:hover svg {
+            fill: $danger-color;
+        }
+
+        svg {
+            width: 18px;
+            height: auto;
+            transition: fill 0.5s ease;
+            fill: #bdbdbd;
+        }
+
+        span {
+            font-size: 13px;
+            line-height: 18px;
+            color: #bdbdbd;
+            margin-left: 5px;
+            transition: color 0.5s ease;
+        }
+    }
+}

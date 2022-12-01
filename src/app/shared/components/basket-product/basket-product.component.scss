@@ -1,0 +1,49 @@
+@import 'variables';
+
+.item-wrapper {
+    grid-template-columns: 250px 40px;
+    position: relative;
+
+    .item-container {
+        z-index: 2;
+        padding: 10px;
+        border-radius: 6px;
+        background-color: $bg-card;
+        transition: all 0.5s ease;
+
+        &:hover {
+        }
+
+        img {
+            border-radius: 4px;
+        }
+    }
+
+    .description-wrapper {
+        margin-left: 20px;
+
+        h5 {
+            max-width: 100%;
+            overflow: hidden;
+            white-space: nowrap;
+            text-overflow: ellipsis;
+        }
+    }
+
+    button {
+        z-index: 1;
+        margin-left: -10px;
+        border-radius: 6px;
+        background-color: $danger-color;
+        opacity: 1;
+        transition: all 0.5s ease;
+
+        &:hover {
+            opacity: 0.8;
+        }
+
+        i {
+            margin-left: 10px;
+        }
+    }
+}

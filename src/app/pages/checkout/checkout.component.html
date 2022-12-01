@@ -1,0 +1,47 @@
+<article>
+    <form [formGroup]="form">
+        <label class="form-label">* Name</label>
+        <div class="mb-3 d-flex w-50">
+            <div class="d-flex flex-column w-50">
+                <input type="text" class="form-control" formControlName="first" placeholder="First" />
+                <div class="text-danger ms-2" *ngIf="first?.invalid && first?.touched">Field is required</div>
+            </div>
+            <div class="d-flex flex-column w-50">
+                <input type="text" class="form-control ms-1" formControlName="last" placeholder="Last" />
+                <div class="text-danger ms-2" *ngIf="last?.invalid && last?.touched">Field is required</div>
+            </div>
+        </div>
+
+        <label class="form-label">* Address</label>
+        <div class="d-flex flex-column w-100">
+            <input type="text" class="form-control mb-1" formControlName="street" placeholder="Street" />
+            <div class="text-danger ms-2" *ngIf="street?.invalid && street?.touched">Field is required</div>
+        </div>
+        <div class="mb-3 d-flex w-100">
+            <div class="d-flex flex-column w-50">
+                <input type="text" class="form-control" placeholder="City" formControlName="city" />
+                <div class="text-danger ms-2" *ngIf="city?.invalid && city?.touched">Field is required</div>
+            </div>
+            <div class="d-flex flex-column w-50">
+                <input type="text" class="form-control ms-1" placeholder="State" formControlName="state" />
+                <div class="text-danger ms-2" *ngIf="state?.invalid && state?.touched">Field is required</div>
+            </div>
+        </div>
+
+        <label for="email" class="form-label">* E-mail</label>
+        <div class="mb-3 w-50 d-flex flex-column">
+            <input type="email" class="form-control" id="email" formControlName="email" />
+            <div class="text-danger ms-2" *ngIf="email?.touched && email?.errors?.['email']">Please enter a valid E-mail</div>
+        </div>
+    </form>
+    <div class="my-4">
+        <label>Total: {{ totalPrice$ | async | currency }}</label>
+    </div>
+    <div class="d-flex w-100 justify-content-center">
+        <!--        [disabled]="form.invalid" -->
+        <button type="submit" class="action-btn" (click)="onFormSubmit()">
+            Pay
+            <i class="bi bi-shield-lock-fill"></i>
+        </button>
+    </div>
+</article>

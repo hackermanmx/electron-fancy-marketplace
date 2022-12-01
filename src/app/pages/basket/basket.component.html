@@ -1,0 +1,15 @@
+<section class="d-flex flex-column align-items-center">
+    <div class="alert alert-warning">
+        <div class="card-title">Whoops! You've exceeded your wallet limit!</div>
+        <div class="card-body">Please remove some of your selections or increase your Wallet amount.</div>
+    </div>
+
+    <efm-basket-product *ngFor="let item of products$ | async" [product]="item"></efm-basket-product>
+
+    <h3 class="my-3">Total: {{ total$ | async | currency }}</h3>
+
+    <button routerLink="/checkout" class="action-btn">
+        Checkout
+        <i class="bi bi-bag-check-fill me-2"></i>
+    </button>
+</section>
