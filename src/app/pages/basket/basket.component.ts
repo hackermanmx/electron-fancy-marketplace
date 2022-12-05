@@ -1,24 +1,24 @@
-import { Component, OnInit } from '@angular/core';
+import { Component } from '@angular/core';
 import { Observable } from 'rxjs';
 import { Product } from '../../shared/components/product/model/product.model';
 import { Select } from '@ngxs/store';
-import { BasketState } from '../store/basket.state';
+import { BasketState, WalletState } from '../store';
+import { WalletAmount } from '../../shared/mocks/wallet';
 
 @Component({
     selector: 'efm-basket',
     templateUrl: './basket.component.html',
     styleUrls: ['./basket.component.scss']
 })
-export class BasketComponent implements OnInit {
+export class BasketComponent {
     @Select(BasketState.basketItems)
     products$!: Observable<Product[]>;
 
     @Select(BasketState.basketTotal)
     total$!: Observable<number>;
 
-    constructor() {}
+    @Select(WalletState.walletTotal)
+    currentWalletAmount$!: Observable<number>;
 
-    ngOnInit() {
-        // this.total$ = this.products$.pipe(map((items) => items.reduce((acc, obj) => acc + obj.price, 0)));
-    }
+    constructor() {}
 }

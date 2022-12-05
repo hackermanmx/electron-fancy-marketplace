@@ -1,4 +1,4 @@
-<a [routerLink]="['/basket']" (click)="$event.stopPropagation()" class="d-flex align-items-center">
+<a [routerLink]="['/basket']" class="d-flex align-items-center">
     <i class="bi bi-basket2-fill"></i>
-    <label>Basket ({{ count$ | async }})</label>
+    <label>Basket ({{ (count$ | async)?.length }})</label>
 </a>

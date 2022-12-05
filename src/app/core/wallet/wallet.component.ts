@@ -1,5 +1,8 @@
 import { Component } from '@angular/core';
-import { Observable, of } from 'rxjs';
+import { Observable } from 'rxjs';
+
+import { WalletState } from '../../pages/store';
+import { Select } from '@ngxs/store';
 
 @Component({
     selector: 'efm-wallet',
@@ -7,9 +10,8 @@ import { Observable, of } from 'rxjs';
     styleUrls: ['./wallet.component.scss']
 })
 export class WalletComponent {
-    walletAmount$: Observable<number>;
+    @Select(WalletState.walletTotal)
+    walletAmount$!: Observable<number>;
 
-    constructor() {
-        this.walletAmount$ = of(100);
-    }
+    constructor() {}
 }

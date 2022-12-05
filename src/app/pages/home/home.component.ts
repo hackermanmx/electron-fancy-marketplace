@@ -2,8 +2,8 @@ import { Component, OnInit } from '@angular/core';
 import { Product } from '../../shared/components/product/model/product.model';
 import { Observable } from 'rxjs';
 import { Select, Store } from '@ngxs/store';
-import { ProductState } from '../store/product.state';
-import { GetProducts } from '../store/product.actions';
+import { ProductState } from '../store';
+import { GetProducts } from '../store';
 
 @Component({
     selector: 'efm-home',

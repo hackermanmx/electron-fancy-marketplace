@@ -9,4 +9,13 @@ export class LoadBasketItems {
     static type = '[Basket] Load Basket Items';
 }
 
-export type BasketActions = AddProductToBasket | LoadBasketItems;
+export class RemoveItem {
+    static type = '[Basket] Remove Basket Item';
+    constructor(public readonly payload: Product['id']) {}
+}
+
+export class ClearBasket {
+    static type = '[Basket] Clear Basket';
+}
+
+export type BasketActions = AddProductToBasket | LoadBasketItems | RemoveItem | ClearBasket;

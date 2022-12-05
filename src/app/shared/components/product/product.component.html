@@ -3,7 +3,7 @@
         <img [src]="product.img" [alt]="product.productName" />
     </a>
     <h3 class="card-title">
-        <a href="#">{{ product.productName }}</a>
+        <a>{{ product.productName }}</a>
     </h3>
     <div class="card-author">
         <i class="bi bi-person-circle"></i>
@@ -14,9 +14,9 @@
             <p>Current price</p>
             <span>{{ product.price | currency }}</span>
         </div>
-        <button class="card-add" (click)="addToBasket(product)">
-            Add
-            <i class="bi bi-bag-heart"></i>
+        <button class="card-add" (click)="addToBasket(product)" [disabled]="isInBasket">
+            {{ isInBasket ? ADD_BTN_STATES.basket : ADD_BTN_STATES.add }}
+            <i class="bi" [class.bi-bag-check-fill]="isInBasket" [class.bi-bag-heart]="!isInBasket"></i>
         </button>
     </div>
     <button class="card-likes" type="button">

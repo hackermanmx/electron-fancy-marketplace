@@ -1,5 +1,8 @@
-import { Component } from '@angular/core';
-import { Observable, of } from 'rxjs';
+import { Component, OnInit } from '@angular/core';
+import { count, Observable, of } from 'rxjs';
+import { Select } from '@ngxs/store';
+import { BasketState } from '../../pages/store';
+import { Product } from '../../shared/components/product/model/product.model';
 
 @Component({
     selector: 'efm-basket-display',
@@ -7,9 +10,8 @@ import { Observable, of } from 'rxjs';
     styleUrls: ['./basket-widget.component.scss']
 })
 export class BasketWidgetComponent {
-    count$: Observable<number>;
+    @Select(BasketState.basketItems)
+    count$!: Observable<Product[]>;
 
-    constructor() {
-        this.count$ = of(0);
-    }
+    constructor() {}
 }

@@ -38,8 +38,7 @@
         <label>Total: {{ totalPrice$ | async | currency }}</label>
     </div>
     <div class="d-flex w-100 justify-content-center">
-        <!--        [disabled]="form.invalid" -->
-        <button type="submit" class="action-btn" (click)="onFormSubmit()">
+        <button type="submit" [disabled]="form.invalid" class="action-btn" (click)="onFormSubmit()">
             Pay
             <i class="bi bi-shield-lock-fill"></i>
         </button>

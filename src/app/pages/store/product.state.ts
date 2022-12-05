@@ -2,14 +2,13 @@ import { State, Selector, Action, StateContext } from '@ngxs/store';
 import { delay, tap } from 'rxjs/operators';
 import { Product } from '../../shared/components/product/model/product.model';
 import { BasketService } from '../../shared/services/basket.service';
-import { GetProducts } from './product.actions';
+import { GetProducts, UpdateProducts } from './product.actions';
 import { Injectable } from '@angular/core';
 
 export interface ProductStateModel {
     products: Product[];
     loaded: boolean;
     loading: boolean;
-    selectedProductId: number | null;
 }
 
 @State<ProductStateModel>({
@@ -17,8 +16,7 @@ export interface ProductStateModel {
     defaults: {
         products: [],
         loaded: false,
-        loading: false,
-        selectedProductId: null
+        loading: false
     }
 })
 @Injectable()
@@ -38,6 +36,9 @@ export class ProductState {
 
         const state = getState();
         if (state.products.length) {
+            patchState({
+                loading: false
+            });
             return;
         }
 
@@ -51,5 +52,14 @@ export class ProductState {
                 });
             })
         );
+    }
+
+    @Action(UpdateProducts)
+    updateProducts({ getState, setState, patchState }: StateContext<ProductStateModel>, { newProductList }: UpdateProducts) {
+        patchState({
+            ...getState(),
+            products: newProductList,
+            loading: false
+        });
     }
 }

@@ -1,15 +1,25 @@
-<section class="d-flex flex-column align-items-center">
-    <div class="alert alert-warning">
-        <div class="card-title">Whoops! You've exceeded your wallet limit!</div>
-        <div class="card-body">Please remove some of your selections or increase your Wallet amount.</div>
-    </div>
+<!-- ivy being dumb -->
+<ng-container *ngIf="{ total: (total$! | async) ?? 0, currentWallet: (currentWalletAmount$! | async) ?? 0 } as amounts">
+    <section class="d-flex flex-column align-items-center" *ngIf="amounts.total; else noBasket">
+        <div class="alert alert-warning" *ngIf="amounts.total > amounts.currentWallet">
+            <div class="card-title">Whoops! You've exceeded your wallet limit!</div>
+            <div class="card-body">Please remove some of your selections or increase your Wallet amount.</div>
+        </div>
 
-    <efm-basket-product *ngFor="let item of products$ | async" [product]="item"></efm-basket-product>
+        <efm-basket-product *ngFor="let item of products$ | async" [product]="item"></efm-basket-product>
 
-    <h3 class="my-3">Total: {{ total$ | async | currency }}</h3>
+        <h3 class="my-3">Total: {{ amounts?.total | currency }}</h3>
 
-    <button routerLink="/checkout" class="action-btn">
-        Checkout
-        <i class="bi bi-bag-check-fill me-2"></i>
-    </button>
-</section>
+        <button routerLink="/checkout" class="action-btn" [disabled]="amounts.total > amounts.currentWallet">
+            Checkout
+            <i class="bi bi-bag-check-fill me-2"></i>
+        </button>
+    </section>
+
+    <ng-template #noBasket>
+        <section class="d-flex flex-column align-items-center justify-content-center">
+            <h2>It looks like your basket is empty!</h2>
+            <p>You can add your products from <a routerLink="/">here</a>.</p>
+        </section>
+    </ng-template>
+</ng-container>

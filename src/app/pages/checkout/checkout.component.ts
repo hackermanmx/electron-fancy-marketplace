@@ -2,6 +2,8 @@ import { Component, OnInit } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { Observable } from 'rxjs';
 import { Router } from '@angular/router';
+import { BasketState, ClearBasket, UpdateWalletAmount } from '../store';
+import { Select, Store } from '@ngxs/store';
 
 @Component({
     selector: 'efm-checkout',
@@ -9,8 +11,10 @@ import { Router } from '@angular/router';
     styleUrls: ['./checkout.component.scss']
 })
 export class CheckoutComponent implements OnInit {
-    form!: FormGroup;
+    @Select(BasketState.basketTotal)
     totalPrice$!: Observable<number>;
+
+    form!: FormGroup;
 
     get first() {
         return this.form.get('first');
@@ -36,7 +40,7 @@ export class CheckoutComponent implements OnInit {
         return this.form.get('email');
     }
 
-    constructor(private router: Router) {}
+    constructor(private router: Router, private store: Store) {}
 
     ngOnInit() {
         this.form = new FormGroup({
@@ -50,6 +54,8 @@ export class CheckoutComponent implements OnInit {
     }
 
     onFormSubmit() {
-        this.router.navigate(['/checkout/confirmation']);
+        this.store.dispatch(new UpdateWalletAmount());
+        this.store.dispatch(new ClearBasket());
+        this.router.navigate(['/confirmation']);
     }
 }
